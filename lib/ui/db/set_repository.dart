@@ -21,14 +21,22 @@ class TeamRepository implements ITeamRepository {
   @override
   Future<int> saveTeam(TeamData teamData) async {
     var completed;
-   // var teams = await _setDao.getAllTeams();
+    var teams = await _setDao.getAllTeams();
+    var sets = List<int>();
+    for (var i = 0; i < teams.length; i++) {
+      sets.add(teams[i].set);
+    }
+    if (sets.contains(teamData.set)) {
+      return Future.sync(() => 0);
+    } else {
+      completed = await _setDao.insertTeam(teamData);
+      return completed;
+    }
     // int num = teams.length;
     //  if (num < 8) {
     //    completed = await _setDao.insertTeam(teamData);
     //    print(completed.toString());
     // }
-     completed = await _setDao.insertTeam(teamData);
-     return completed;
   }
 
   @override

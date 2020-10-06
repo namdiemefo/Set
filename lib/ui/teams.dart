@@ -16,11 +16,11 @@ class Teams extends StatelessWidget {
       ),
       body: ListView.builder(
 
-        itemCount: teams.length,
+        itemCount: teams == null ? 1 : teams.length,
           itemBuilder: (BuildContext context, int index) {
           return Card(
             child: ListTile(
-              title: Text('${ teams[index].set }'),
+              title: Text('${ teams != null ? teams[index].set : 'No sets available' }'),
             ),
           );
           }),

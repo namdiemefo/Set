@@ -34,6 +34,7 @@ class SetDao extends DatabaseAccessor<SetDatabase> with _$SetDaoMixin {
   }
 
   Future insertTeam(TeamData teams) => into(team).insert(teams);
+  Future insertTem(TeamData teams) => into(team).insert(teams);
   Future updateTeam(TeamData teams) => update(team).replace(teams);
   Future deleteTeam(TeamData teams) => delete(team).delete(teams);
   Future deleteTeams() => delete(team).go();

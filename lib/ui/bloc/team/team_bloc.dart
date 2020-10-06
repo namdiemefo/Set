@@ -64,8 +64,12 @@ class TeamBloc extends Bloc<TeamEvent, TeamState> {
     TeamData teams = event.team;
     print('team set is ${teams.set.toString()}');
     int done = await teamRepository.saveTeam(teams);
-    print('done is ${done.toString()}');
     List<TeamData> team = await teamRepository.getAllTeams();
+    // if (done == 0) {
+    //   var error = "This set dey already my g";
+    //   yield TeamFailure(error);
+    //   yield TeamSuccess(team);
+    // }
     print(team.toString());
     yield TeamSuccess(team);
   }
@@ -94,10 +98,9 @@ class TeamBloc extends Bloc<TeamEvent, TeamState> {
 
   List<TeamData> shiftArray(List<TeamData> array, int oldIndex) {
     var listData = List<TeamData>();
-    int zeroth;
+    int zeroth = array[oldIndex].set;
     var empty = List<int>();
     for (var i = 0; i < array.length; i++) {
-      zeroth = array[0].set;
       empty.add(array[i].set);
     }
     List<int> numb = split(empty, oldIndex);

@@ -40,6 +40,7 @@ class Alert {
           _submitTime(context);
         } else if (actionMethod == 3) {
           if (values.isNotEmpty) {
+            print('values is ${values.first}');
             _removeOne(context, values.first);
           }
 
@@ -58,6 +59,17 @@ class Alert {
   }
 
   Widget _getAlertDialog(List<Widget> actions, int actionMethod) {
+    if (actionMethod == 7) {
+      if (Platform.isIOS) {
+        return CupertinoAlertDialog(
+          title: Text(title),
+        );
+      } else {
+        return AlertDialog(
+          title: Text(title),
+        );
+      }
+    }
     if (actionMethod == 3 || actionMethod == 4 || actionMethod == 5) {
       if (Platform.isIOS) {
         return CupertinoAlertDialog(

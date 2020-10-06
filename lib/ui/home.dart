@@ -53,6 +53,10 @@ class Home extends StatelessWidget {
                   },
                   child: BlocBuilder<TeamBloc, TeamState>(
                     builder: (context, state) {
+                      // if (state is TeamFailure) {
+                      //   print('team failure');
+                      //   Alert(title: state.error, actionMethod: 7).show(context);
+                      // }
                       if (state is TeamInitial) {
                         return Text('Enter Set');
                       }
@@ -93,6 +97,9 @@ class Home extends StatelessWidget {
                   }, actionMethod: 3, values: [value2.value.text]).show(context),
                   child: BlocBuilder<TeamBloc, TeamState>(
                     builder: (context, state) {
+                      // if (state is TeamFailure) {
+                      //   Alert(title: state.error,  actionMethod: 7).show(context);
+                      // }
                       if (state is TeamInitial) {
                         return Text('Enter Set');
                       }
@@ -149,7 +156,7 @@ class Home extends StatelessWidget {
                   color: Colors.transparent,
                   child: Text('Enter Time'),
                   textColor: Theme.of(context).primaryColor,
-                  onPressed: () => Alert(title: 'Enter time', hint: 'Minutes', alertActionTitles: 'Start', actionMethod: 5).show(context),
+                  onPressed: () => Alert(title: 'Enter time', hint: 'Minutes', alertActionTitles: 'Start', actionMethod: 2).show(context),
                 )
               ),
 
